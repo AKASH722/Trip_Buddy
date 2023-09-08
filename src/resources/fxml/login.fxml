@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<StackPane id="loginPane" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: aqua;" stylesheets="/css/login.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.login.LoginController">
+    <GridPane id="internalPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" StackPane.alignment="CENTER">
+        <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="161.5999755859375" minWidth="10.0" prefWidth="132.00005645751952" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="387.199951171875" minWidth="10.0" prefWidth="127.99994354248048" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="387.199951171875" minWidth="10.0" prefWidth="102.79998779296875" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="387.199951171875" minWidth="10.0" prefWidth="127.60001220703123" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="190.4000244140625" minWidth="10.0" prefWidth="126.99997558593748" />
+        </columnConstraints>
+        <rowConstraints>
+            <RowConstraints maxHeight="106.79999008178712" minHeight="10.0" prefHeight="31.400028228759766" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="114.59997177124023" minHeight="10.0" prefHeight="93.80000610351563" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="156.60001220703126" minHeight="10.0" prefHeight="58.600006103515625" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="276.40000915527344" minHeight="10.0" prefHeight="132.19999389648436" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="237.60000915527343" minHeight="10.0" prefHeight="40.5999755859375" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="237.60000915527343" minHeight="10.0" prefHeight="71.00002441406252" vgrow="SOMETIMES" />
+        </rowConstraints>
+        <StackPane.margin>
+            <Insets />
+        </StackPane.margin>
+        <GridPane alignment="CENTER" prefHeight="122.0" prefWidth="267.0" GridPane.columnIndex="1" GridPane.columnSpan="3" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER">
+            <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="261.6000091552735" minWidth="10.0" prefWidth="137.0" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="283.4000244140625" minWidth="10.0" prefWidth="209.0" />
+            </columnConstraints>
+            <rowConstraints>
+                <RowConstraints maxHeight="44.60001220703125" minHeight="10.0" prefHeight="43.8000244140625" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="53.4" minHeight="10.0" prefHeight="46.9999755859375" vgrow="SOMETIMES" />
+            </rowConstraints>
+            <Label id="label" alignment="CENTER" blendMode="SRC_OVER" contentDisplay="CENTER" prefHeight="28.0" prefWidth="112.0" text="Username:" textFill="#912fb1" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+                <font>
+                    <Font name="System Bold Italic" size="19.0" />
+                </font>
+            </Label>
+            <TextField fx:id="username" alignment="BASELINE_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="26.0" prefWidth="197.0" GridPane.columnIndex="1">
+                <font>
+                    <Font name="System Bold Italic" size="14.0" />
+                </font>
+                <cursor>
+                    <Cursor fx:constant="DEFAULT" />
+                </cursor>
+            </TextField>
+            <Label id="label" alignment="CENTER" contentDisplay="CENTER" prefHeight="28.0" prefWidth="114.0" text="Password:" textFill="#912fb1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+                <font>
+                    <Font name="System Bold Italic" size="19.0" />
+                </font>
+            </Label>
+            <PasswordField fx:id="password" alignment="BASELINE_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="26.0" prefWidth="198.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                <font>
+                    <Font size="14.0" />
+                </font>
+            </PasswordField>
+        </GridPane>
+        <ImageView fitHeight="93.0" fitWidth="118.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+            <Image url="@../images/icon.png" />
+        </ImageView>
+        <Button fx:id="signUp" mnemonicParsing="false" prefHeight="40.0" prefWidth="104.0" text="SignUp" textAlignment="CENTER" textFill="#d66bef" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="4" GridPane.valignment="TOP">
+           <font>
+               <Font name="System Bold Italic" size="15.0" />
+           </font>
+        </Button>
+        <Button fx:id="login" mnemonicParsing="false" onAction="#onClickLogin" prefHeight="49.0" prefWidth="102.0" text="Login" textAlignment="CENTER" textFill="#d66bef" GridPane.columnIndex="3" GridPane.halignment="LEFT" GridPane.rowIndex="4" GridPane.valignment="TOP">
+           <font>
+               <Font name="System Bold Italic" size="15.0" />
+           </font>
+        </Button>
+        <Label id="title" alignment="CENTER" blendMode="MULTIPLY" contentDisplay="CENTER" prefHeight="89.0" prefWidth="358.0" text="Welcome to Trip Buddy" textAlignment="CENTER" textFill="#912fb1" GridPane.columnIndex="1" GridPane.columnSpan="3" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+           <font>
+               <Font size="24.0" />
+           </font>
+        </Label>
+    </GridPane>
+</StackPane>

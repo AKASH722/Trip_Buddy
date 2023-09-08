@@ -1,0 +1,15 @@
+#loginPane {
+    -fx-background-image: url('../images/loginBg.jpg');
+    -fx-opacity: 0.9;
+    -fx-background-position: center;
+    -fx-background-size: cover;
+    -fx-alignment: center;
+}
+
+#label {
+    -fx-background-color : white;
+}
+#title {
+    -fx-border-color: #912fb1;
+    -fx-border-width: 2;
+}
