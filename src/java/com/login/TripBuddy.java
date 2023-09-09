@@ -1,13 +1,14 @@
 package com.login;
 
+import com.user.User;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
-public class Login extends Application {
-
+public class TripBuddy extends Application {
+    static User user;
     @Override
     public void start(Stage stage) throws Exception {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/login.fxml"));
