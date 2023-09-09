@@ -1,0 +1,17 @@
+#homePane {
+    -fx-background-image: url('../images/bg.jpg');
+    -fx-opacity: 0.9;
+    -fx-background-position: center;
+    -fx-background-size: cover;
+    -fx-alignment: center;
+}
+
+#internalPane {
+    -fx-fill-height: true;
+}
+
+.button {
+    -fx-text-fill: #d66bef;
+    -fx-font-size: 13;
+}
+

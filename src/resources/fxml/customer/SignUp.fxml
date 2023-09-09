@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 
-<StackPane id="SignupPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" stylesheets="/css/signUp.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.customer.SignUpController">
+<StackPane id="SignupPane" maxHeight="Infinity" maxWidth="Infinity" minHeight="400.0" minWidth="600.0" prefHeight="400.0" prefWidth="600.0"  stylesheets="/css/signUp.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.customer.SignUpController">
    <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" StackPane.alignment="CENTER">
       <Label id="title" alignment="CENTER" blendMode="MULTIPLY" contentDisplay="CENTER" layoutX="234.0" layoutY="42.0" prefHeight="40.0" prefWidth="112.0" text="SignUp" textAlignment="CENTER" textFill="#912fb1">
          <font>

@@ -41,9 +41,23 @@ public class LoginController {
             } else {
                 TripBuddy.user = user;
                 if(user.type().equals("Customer")) {
-                    System.out.println("Customer");
+                    Stage stage = (Stage) ((Node)actionEvent.getSource()).getScene().getWindow();
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/customer/home.fxml"));
+                    try {
+                        stage.setScene(new Scene(loader.load()));
+                    } catch (IOException e) {
+                        throw new RuntimeException(e);
+                    }
+                    stage.show();
                 } else {
-                    System.out.println("Admin");
+                    Stage stage = (Stage) ((Node)actionEvent.getSource()).getScene().getWindow();
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/admin/home.fxml"));
+                    try {
+                        stage.setScene(new Scene(loader.load()));
+                    } catch (IOException e) {
+                        throw new RuntimeException(e);
+                    }
+                    stage.show();
                 }
             }
         }
