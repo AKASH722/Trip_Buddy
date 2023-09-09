@@ -5,9 +5,9 @@ public class ValidCheck {
         String[] parts = email.split("@");
         if(parts.length == 2 && !parts[0].isEmpty() && !parts[1].isEmpty()) {
             String[] part = parts[1].split("\\.");
-            return part.length == 2 && !part[0].isEmpty() && !part[1].isEmpty();
+            return part.length != 2 || part[0].isEmpty() || part[1].isEmpty();
         } else {
-            return false;
+            return true;
         }
     }
     public static boolean contact(String contact) {

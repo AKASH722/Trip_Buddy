@@ -24,7 +24,7 @@ public class LoginController {
             dialog.setTitle("Warning");
             dialog.getDialogPane().setContentText("Please enter all the fields");
             dialog.show();
-        } else if (!ValidCheck.email(email.getText())) {
+        } else if (ValidCheck.email(email.getText())) {
             dialog.setTitle("Warning");
             dialog.getDialogPane().setContentText("Please enter a valid email");
             dialog.show();

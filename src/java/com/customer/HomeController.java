@@ -3,7 +3,7 @@ package com.customer;
 import javafx.event.ActionEvent;
 
 public class HomeController {
-    public void onClickBookPcakage(ActionEvent actionEvent) {
+    public void onClickBookPackage(ActionEvent actionEvent) {
     }
 
     public void onClickCustomPackage(ActionEvent actionEvent) {

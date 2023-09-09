@@ -227,7 +227,7 @@ public class SignUpController implements Initializable {
             dialog.setTitle("Warning");
             dialog.getDialogPane().setContentText("Please enter all the required filed");
             dialog.show();
-        } else if (!ValidCheck.email(email.getText())) {
+        } else if (ValidCheck.email(email.getText())) {
             dialog.setTitle("Warning");
             dialog.getDialogPane().setContentText("Please enter a valid email");
             dialog.show();
