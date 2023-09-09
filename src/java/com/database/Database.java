@@ -10,10 +10,10 @@ public class Database {
     public Database() {
         try {
             connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/trip_management_system","root","root");
-            checkUser = connection.prepareStatement("SELECT user_id,name,email,usertype,phone_number,country FROM users WHERE BINARY email = ? AND password = SHA2(?,256)");
+            checkUser = connection.prepareStatement("SELECT user_id,name,email,usertype,phone_number,country FROM users WHERE email = ? AND password = SHA2(?,256)");
             addUser = connection.prepareStatement("INSERT INTO USERS(name,email,password,usertype,phone_number,country) VALUES(?,?, SHA2(?,256),?,?,?)");
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
+        } catch (SQLException ignored) {
+
         }
     }
 
@@ -26,7 +26,7 @@ public class Database {
                 return new User(rs.getInt("user_id"),rs.getString("name"),rs.getString("email"),rs.getString("usertype"),rs.getLong("phone_number"),rs.getString("country"));
             }
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            System.out.println(e.getErrorCode());
         }
         return null;
     }
@@ -34,8 +34,8 @@ public class Database {
     public void close() {
         try {
             connection.close();
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
+        } catch (SQLException ignored) {
+
         }
     }
     public boolean addNewUser(String name, String email,String password, long phone_number,String country) {
@@ -48,7 +48,8 @@ public class Database {
             addUser.setString(6,country);
             return addUser.executeUpdate() == 1;
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            System.out.println(e.getErrorCode());
+            return false;
         }
     }
 }

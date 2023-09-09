@@ -241,9 +241,21 @@ public class SignUpController implements Initializable {
             dialog.show();
         } else {
             Database database = new Database();
-            if( database.addNewUser(name.getText(),email.getText(),password.getText(),Long.parseLong(contact.getText()),country.getValue())) {
-                System.out.println("added");
+            if(database.addNewUser(name.getText(),email.getText(),password.getText(),Long.parseLong(contact.getText()),country.getValue())) {
+                dialog.setTitle("Successful");
+                dialog.getDialogPane().setContentText("Account Created Successfully");
+                dialog.show();
+            } else {
+                //SQL ERROR CODE: 1062
+                dialog.setTitle("Account exists");
+                dialog.getDialogPane().setContentText("Account with same email or phone number already exists");
+                dialog.show();
             }
+            name.setText("");
+            email.setText("");
+            password.setText("");
+            country.setValue("");
+            contact.setText("");
             database.close();
         }
     }
