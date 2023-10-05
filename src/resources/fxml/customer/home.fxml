@@ -3,11 +3,10 @@
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-<StackPane xmlns:fx="http://javafx.com/fxml/1" id="homePane" maxHeight="Infinity" maxWidth="Infinity" minHeight="400.0"
-           minWidth="600.0"
+<StackPane xmlns:fx="http://javafx.com/fxml/1" id="homePane" maxHeight="Infinity" maxWidth="Infinity" minHeight="400.0" minWidth="600.0"
            prefHeight="400.0" prefWidth="600.0" stylesheets="/css/home.css"
            xmlns="http://javafx.com/javafx/20.0.1" fx:controller="com.customer.HomeController">
-    <BorderPane id="internalPane" prefHeight="200.0" prefWidth="200.0" StackPane.alignment="CENTER">
+    <BorderPane fx:id="internalPane" prefHeight="200.0" prefWidth="200.0" StackPane.alignment="CENTER">
         <StackPane.margin>
             <Insets/>
         </StackPane.margin>
@@ -38,13 +37,6 @@
                         </FlowPane.margin>
                     </Button>
                     <Button alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
-                            minWidth="-Infinity" mnemonicParsing="false" onAction="#onClickViewFlights"
-                            prefHeight="40.0" prefWidth="110.0" text="View Flight">
-                        <FlowPane.margin>
-                            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0"/>
-                        </FlowPane.margin>
-                    </Button>
-                    <Button alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
                             minWidth="-Infinity" mnemonicParsing="false" onAction="#onClickViewCruise" prefHeight="40.0"
                             prefWidth="110.0" text="View Cruise">
                         <FlowPane.margin>
@@ -59,6 +51,12 @@
                     </Button>
                     <Button alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false"
                             onAction="#onClickAccount" prefHeight="40.0" prefWidth="110.0" text="Account">
+                        <FlowPane.margin>
+                            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0"/>
+                        </FlowPane.margin>
+                    </Button>
+                    <Button alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false"
+                            onAction="#onClickLogout" prefHeight="40.0" prefWidth="110.0" text="Logout">
                         <FlowPane.margin>
                             <Insets bottom="10.0" left="10.0" right="10.0" top="10.0"/>
                         </FlowPane.margin>

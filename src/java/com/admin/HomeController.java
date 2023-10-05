@@ -24,14 +24,16 @@ public class HomeController {
         internalPane.setCenter(loader.load());
     }
 
-    public void onClickHotel(ActionEvent actionEvent) {
+    public void onClickHotel(ActionEvent actionEvent) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/admin/hotels.fxml"));
+        internalPane.setCenter(loader.load());
     }
 
-    public void onClickFlights(ActionEvent actionEvent) {
+    public void onClickCruise(ActionEvent actionEvent) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/admin/cruises.fxml"));
+        internalPane.setCenter(loader.load());
     }
 
-    public void onClickCruise(ActionEvent actionEvent) {
-    }
 
     public void onClickLogout(ActionEvent actionEvent) {
         TripBuddy.user = null;

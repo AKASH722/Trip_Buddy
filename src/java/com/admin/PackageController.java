@@ -130,8 +130,17 @@ public class PackageController implements Initializable {
                         Double priceDouble = Double.parseDouble(price);
                         int durationInt = Integer.parseInt(duration);
                         Database database1 = new Database();
-                        database1.updatePackage(packageName, description, priceDouble, durationInt, place, city, state, country, image, id, TripBuddy.user.user_id());
+                        boolean updated = database1.updatePackage(packageName, description, priceDouble, durationInt, place, city, state, country, image, id, TripBuddy.user.user_id());
                         database1.close();
+                        if (updated) {
+                            dialogWarning.setTitle("Successful");
+                            dialogWarning.setContentText("Package updated successfully");
+                            dialogWarning.showAndWait();
+                        } else {
+                            dialogWarning.setTitle("Failed");
+                            dialogWarning.setContentText("Some error occurred");
+                            dialogWarning.showAndWait();
+                        }
                         break;
                     }
                 } catch (NumberFormatException e) {
@@ -150,6 +159,7 @@ public class PackageController implements Initializable {
         Dialog<ButtonType> dialog = new Dialog<>();
         dialog.setTitle("Warning");
         dialog.setContentText("Are you sure you want to delete this package?");
+        dialog.getDialogPane().getScene().getWindow().setOnCloseRequest(windowEvent -> dialog.close());
         ButtonType yesButtonType = new ButtonType("Yes", ButtonBar.ButtonData.YES);
         ButtonType noButtonType = new ButtonType("No", ButtonBar.ButtonData.NO);
         dialog.getDialogPane().getButtonTypes().addAll(yesButtonType, noButtonType);
@@ -158,10 +168,18 @@ public class PackageController implements Initializable {
             Button delete = (Button) actionEvent.getSource();
             long id = Long.parseLong(delete.getId());
             Database database = new Database();
-            database.deletePackage(id, TripBuddy.user.user_id());
+            boolean deleted = database.deletePackage(id, TripBuddy.user.user_id());
             database.close();
-            dialog.setTitle("Successfully Deleted");
-            dialog.setContentText("Are you sure you want to delete this package?");
+            dialog.getDialogPane().getButtonTypes().clear();
+            if (deleted) {
+                dialog.setTitle("Successful");
+                dialog.setContentText("Package deleted successfully");
+                dialog.showAndWait();
+            } else {
+                dialog.setTitle("Failed");
+                dialog.setContentText("Some error occurred");
+                dialog.showAndWait();
+            }
         }
         onClickRefresh(null);
     }
@@ -252,8 +270,17 @@ public class PackageController implements Initializable {
                         Double priceDouble = Double.parseDouble(price);
                         int durationInt = Integer.parseInt(duration);
                         Database database = new Database();
-                        database.addPackage(packageName, description, priceDouble, durationInt, place, city, state, country, image, TripBuddy.user.user_id());
+                        boolean added = database.addPackage(packageName, description, priceDouble, durationInt, place, city, state, country, image, TripBuddy.user.user_id());
                         database.close();
+                        if (added) {
+                            dialogWarning.setTitle("Successful");
+                            dialogWarning.setContentText("Package added successfully");
+                            dialogWarning.showAndWait();
+                        } else {
+                            dialogWarning.setTitle("Failed");
+                            dialogWarning.setContentText("Some error occurred");
+                            dialogWarning.showAndWait();
+                        }
                         break;
                     }
                 } catch (NumberFormatException e) {
@@ -300,7 +327,7 @@ public class PackageController implements Initializable {
         for (Packages packages : packagesList) {
             HBox packageInfoContainer = new HBox();
             String fileName = packages.imagesFilename();
-            if (fileName == null) {
+            if (fileName == null || fileName.isEmpty()) {
                 fileName = "src/resources/images/icon.png";
             }
             Image image = new Image("file:" + fileName);

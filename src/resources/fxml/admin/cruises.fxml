@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<BorderPane xmlns:fx="http://javafx.com/fxml/1" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="100.0"
+            prefWidth="1000.0" stylesheets="/css/packages.css" xmlns="http://javafx.com/javafx/20.0.1"
+            fx:controller="com.admin.CruiseController">
+    <center>
+        <ScrollPane id="internalPane" fitToHeight="true" fitToWidth="true" maxHeight="1.7976931348623157E308"
+                    maxWidth="1.7976931348623157E308" prefHeight="200.0" prefWidth="200.0"
+                    BorderPane.alignment="CENTER">
+            <BorderPane.margin>
+                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0"/>
+            </BorderPane.margin>
+            <padding>
+                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0"/>
+            </padding>
+            <VBox fx:id="cruisesContainer" alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="10.0">
+                <padding>
+                    <Insets bottom="10.0" left="10.0" right="10.0" top="10.0"/>
+                </padding>
+            </VBox>
+        </ScrollPane>
+    </center>
+    <top>
+        <HBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="38.0" prefWidth="600.0"
+              BorderPane.alignment="CENTER">
+            <BorderPane.margin>
+                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0"/>
+            </BorderPane.margin>
+            <FlowPane alignment="CENTER" columnHalignment="CENTER" hgap="40.0" maxHeight="-Infinity"
+                      maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0"
+                      prefWidth="100.0" vgap="10.0" HBox.hgrow="ALWAYS">
+                <HBox.margin>
+                    <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
+                </HBox.margin>
+                <padding>
+                    <Insets bottom="10.0" left="10.0" right="10.0" top="10.0"/>
+                </padding>
+                <TextField fx:id="searchText" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
+                           minWidth="-Infinity" prefHeight="25.0" prefWidth="120.0" promptText="cruise name"/>
+                <Button fx:id="search" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
+                        minWidth="-Infinity" mnemonicParsing="false" onAction="#onSearchAction" prefHeight="30.0"
+                        prefWidth="70.0" text="Search"/>
+                <Button alignment="CENTER" contentDisplay="TOP" minWidth="33.0" mnemonicParsing="false"
+                        onAction="#onClickViewCruises" prefHeight="30.0" prefWidth="110.0" text="View cruises"/>
+                <Button alignment="CENTER" contentDisplay="CENTER" minWidth="33.0" mnemonicParsing="false"
+                        onAction="#onClickAddCruise" prefHeight="30.0" prefWidth="110.0" text="Add Cruises"/>
+            </FlowPane>
+        </HBox>
+    </top>
+    <padding>
+        <Insets bottom="100.0" left="200.0" right="200.0" top="50.0"/>
+    </padding>
+</BorderPane>

@@ -3,8 +3,7 @@
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-<StackPane xmlns:fx="http://javafx.com/fxml/1" fx:id="homePane" maxHeight="Infinity" maxWidth="Infinity"
-           minHeight="400.0"
+<StackPane xmlns:fx="http://javafx.com/fxml/1" fx:id="homePane" maxHeight="Infinity" maxWidth="Infinity" minHeight="400.0"
            minWidth="600.0" prefHeight="400.0" prefWidth="600.0" stylesheets="/css/home.css"
            xmlns="http://javafx.com/javafx/20.0.1" fx:controller="com.admin.HomeController">
     <BorderPane fx:id="internalPane" prefHeight="200.0" prefWidth="200.0" StackPane.alignment="CENTER">
@@ -19,17 +18,11 @@
                     <Button alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false"
                             onAction="#onClickPackages" prefHeight="40.0" prefWidth="110.0" text="Packages">
                         <FlowPane.margin>
-                            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0"/>
+                            <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
                         </FlowPane.margin>
                     </Button>
                     <Button alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false"
                             onAction="#onClickHotel" prefHeight="40.0" prefWidth="110.0" text="Hotels">
-                        <FlowPane.margin>
-                            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0"/>
-                        </FlowPane.margin>
-                    </Button>
-                    <Button alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false"
-                            onAction="#onClickFlights" prefHeight="40.0" prefWidth="110.0" text="Flights">
                         <FlowPane.margin>
                             <Insets bottom="10.0" left="10.0" right="10.0" top="10.0"/>
                         </FlowPane.margin>
@@ -42,13 +35,6 @@
                     </Button>
                     <Button alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false"
                             onAction="#onClickBookings" prefHeight="40.0" prefWidth="110.0" text="Bookings">
-                        <FlowPane.margin>
-                            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0"/>
-                        </FlowPane.margin>
-                    </Button>
-                    <Button alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false"
-                            onAction="#onClickUsers" prefHeight="40.0" prefWidth="110.0" text="Users"
-                            textAlignment="CENTER">
                         <FlowPane.margin>
                             <Insets bottom="10.0" left="10.0" right="10.0" top="10.0"/>
                         </FlowPane.margin>
