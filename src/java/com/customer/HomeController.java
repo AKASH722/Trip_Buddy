@@ -3,22 +3,19 @@ package com.customer;
 import javafx.event.ActionEvent;
 
 public class HomeController {
-    public void onClickBookPackage(ActionEvent actionEvent) {
+    public void onClickViewPackage(ActionEvent actionEvent) {
     }
 
     public void onClickCustomPackage(ActionEvent actionEvent) {
     }
 
-    public void onClickBookHotel(ActionEvent actionEvent) {
+    public void onClickViewHotel(ActionEvent actionEvent) {
     }
 
-    public void onClickBookFlights(ActionEvent actionEvent) {
+    public void onClickViewFlights(ActionEvent actionEvent) {
     }
 
-    public void onClickBookCruise(ActionEvent actionEvent) {
-    }
-
-    public void onClickBookTrain(ActionEvent actionEvent) {
+    public void onClickViewCruise(ActionEvent actionEvent) {
     }
 
     public void onClickAccount(ActionEvent actionEvent) {

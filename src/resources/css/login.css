@@ -7,8 +7,9 @@
 }
 
 #label {
-    -fx-background-color : white;
+    -fx-background-color: white;
 }
+
 #title {
     -fx-border-color: #912fb1;
     -fx-border-width: 2;

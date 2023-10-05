@@ -1,14 +1,17 @@
 package com.customer;
 
 import com.database.Database;
-import com.user.ValidCheck;
+import com.user.Validator;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Scene;
-import javafx.scene.control.*;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.Dialog;
+import javafx.scene.control.PasswordField;
+import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -16,12 +19,6 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class SignUpController implements Initializable {
-    @FXML
-    private TextField name,email,contact;
-    @FXML
-    private PasswordField password;
-    @FXML
-    private ComboBox<String> country;
     private final String[] countries = {
         "Afghanistan",
         "Albania",
@@ -219,29 +216,35 @@ public class SignUpController implements Initializable {
         "Zambia",
         "Zimbabwe"
     };
+    @FXML
+    private TextField name, email, contact;
+    @FXML
+    private PasswordField password;
+    @FXML
+    private ComboBox<String> country;
 
     public void onClickSignUp(ActionEvent actionEvent) {
         Dialog<String> dialog = new Dialog<>();
         dialog.getDialogPane().getScene().getWindow().setOnCloseRequest(windowEvent -> dialog.close());
-        if(name.getText().isEmpty()||email.getText().isEmpty()||password.getText().isEmpty()||country.getValue()==null ||contact.getText().isEmpty()) {
+        if (name.getText().isEmpty() || email.getText().isEmpty() || password.getText().isEmpty() || country.getValue() == null || contact.getText().isEmpty()) {
             dialog.setTitle("Warning");
             dialog.getDialogPane().setContentText("Please enter all the required filed");
             dialog.show();
-        } else if (ValidCheck.email(email.getText())) {
+        } else if (Validator.email(email.getText())) {
             dialog.setTitle("Warning");
             dialog.getDialogPane().setContentText("Please enter a valid email");
             dialog.show();
-        } else if(!ValidCheck.password(password.getText())) {
+        } else if (!Validator.password(password.getText())) {
             dialog.setTitle("Warning");
             dialog.getDialogPane().setContentText("Please enter a valid password");
             dialog.show();
-        } else if (!ValidCheck.contact(contact.getText())) {
+        } else if (!Validator.contact(contact.getText())) {
             dialog.setTitle("Warning");
             dialog.getDialogPane().setContentText("Please enter a valid contact");
             dialog.show();
         } else {
             Database database = new Database();
-            if(database.addNewUser(name.getText(),email.getText(),password.getText(),Long.parseLong(contact.getText()),country.getValue())) {
+            if (database.addNewUser(name.getText(), email.getText(), password.getText(), Long.parseLong(contact.getText()), country.getValue())) {
                 dialog.setTitle("Successful");
                 dialog.getDialogPane().setContentText("Account Created Successfully");
                 dialog.show();
