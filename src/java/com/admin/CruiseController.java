@@ -146,7 +146,6 @@ public class CruiseController implements Initializable {
     private void onUpdateCruiseButtonAction(ActionEvent actionEvent) {
 
     }
-
     private void onDeleteCruiseButtonAction(ActionEvent actionEvent) {
     }
 

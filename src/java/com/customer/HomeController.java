@@ -19,10 +19,6 @@ public class HomeController {
         internalPane.setCenter(loader.load());
     }
 
-    public void onClickCustomPackage(ActionEvent actionEvent) {
-
-    }
-
     public void onClickViewHotel(ActionEvent actionEvent) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/customer/hotels.fxml"));
         internalPane.setCenter(loader.load());
@@ -31,10 +27,6 @@ public class HomeController {
     public void onClickViewCruise(ActionEvent actionEvent) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/customer/cruises.fxml"));
         internalPane.setCenter(loader.load());
-    }
-
-    public void onClickAccount(ActionEvent actionEvent) {
-
     }
 
     public void onClickBookings(ActionEvent actionEvent) {
