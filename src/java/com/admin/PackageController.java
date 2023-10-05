@@ -313,7 +313,7 @@ public class PackageController implements Initializable {
                     Stage imageStage = new Stage();
                     ImageView largeImageView = new ImageView(image);
                     StackPane imagePane = new StackPane(largeImageView);
-                    Scene imageScene = new Scene(imagePane, 800,600);
+                    Scene imageScene = new Scene(imagePane, 800, 600);
                     largeImageView.setFitHeight(550);
                     largeImageView.setFitWidth(largeImageView.getFitHeight() * ratio);
                     imageStage.setScene(imageScene);

@@ -196,7 +196,7 @@ public class Database {
             preparedStatement.setString(7, state);
             preparedStatement.setString(8, country);
             preparedStatement.setString(9, image);
-preparedStatement.setLong(10, id);
+            preparedStatement.setLong(10, id);
             preparedStatement.setInt(11, user_id);
             preparedStatement.executeUpdate();
             preparedStatement.close();

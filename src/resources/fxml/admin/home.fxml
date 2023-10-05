@@ -3,7 +3,8 @@
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-<StackPane xmlns:fx="http://javafx.com/fxml/1" fx:id="homePane" maxHeight="Infinity" maxWidth="Infinity" minHeight="400.0"
+<StackPane xmlns:fx="http://javafx.com/fxml/1" fx:id="homePane" maxHeight="Infinity" maxWidth="Infinity"
+           minHeight="400.0"
            minWidth="600.0" prefHeight="400.0" prefWidth="600.0" stylesheets="/css/home.css"
            xmlns="http://javafx.com/javafx/20.0.1" fx:controller="com.admin.HomeController">
     <BorderPane fx:id="internalPane" prefHeight="200.0" prefWidth="200.0" StackPane.alignment="CENTER">
