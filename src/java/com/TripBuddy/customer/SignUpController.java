@@ -1,7 +1,7 @@
-package com.customer;
+package com.TripBuddy.customer;
 
-import com.database.Database;
-import com.user.Validator;
+import com.TripBuddy.database.Database;
+import com.TripBuddy.utilities.Validator;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;

@@ -10,7 +10,7 @@
 <StackPane xmlns:fx="http://javafx.com/fxml/1" id="loginPane" maxHeight="Infinity" maxWidth="Infinity" minHeight="400.0"
            minWidth="600.0"
            prefHeight="400.0" prefWidth="600.0" stylesheets="/css/login.css"
-           xmlns="http://javafx.com/javafx/20.0.1" fx:controller="com.login.LoginController">
+           xmlns="http://javafx.com/javafx/20.0.1" fx:controller="com.TripBuddy.login.LoginController">
     <GridPane id="internalPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
               StackPane.alignment="CENTER">
         <columnConstraints>

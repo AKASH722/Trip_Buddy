@@ -3,9 +3,10 @@
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-<BorderPane xmlns:fx="http://javafx.com/fxml/1" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="100.0"
+<BorderPane xmlns:fx="http://javafx.com/fxml/1" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308"
+            prefHeight="100.0"
             prefWidth="1000.0" stylesheets="/css/hotels.css" xmlns="http://javafx.com/javafx/20.0.1"
-            fx:controller="com.admin.HotelController">
+            fx:controller="com.TripBuddy.admin.HotelController">
     <center>
         <ScrollPane id="internalPane" fitToHeight="true" fitToWidth="true" maxHeight="1.7976931348623157E308"
                     maxWidth="1.7976931348623157E308" prefHeight="200.0" prefWidth="200.0"

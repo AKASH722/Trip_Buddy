@@ -1,5 +1,5 @@
 #homePane {
-    -fx-background-image: url('../images/bg.jpg');
+    -fx-background-image: url('../images/bg.png');
     -fx-opacity: 0.9;
     -fx-background-position: center;
     -fx-background-size: cover;

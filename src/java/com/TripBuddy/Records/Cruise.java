@@ -1,4 +1,4 @@
-package com.Records;
+package com.TripBuddy.Records;
 
 import java.time.LocalDateTime;
 

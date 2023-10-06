@@ -3,10 +3,9 @@
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-<BorderPane xmlns:fx="http://javafx.com/fxml/1" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308"
-            prefHeight="100.0"
-            prefWidth="1000.0" stylesheets="/css/packages.css" xmlns="http://javafx.com/javafx/20.0.1"
-            fx:controller="com.TripBuddy.admin.PackageController">
+<BorderPane xmlns:fx="http://javafx.com/fxml/1" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="100.0"
+            prefWidth="1000.0" stylesheets="/css/bookings.css" xmlns="http://javafx.com/javafx/20.0.1"
+            fx:controller="com.TripBuddy.admin.BookingsController">
     <center>
         <ScrollPane id="internalPane" fitToHeight="true" fitToWidth="true" maxHeight="1.7976931348623157E308"
                     maxWidth="1.7976931348623157E308" prefHeight="200.0" prefWidth="200.0"
@@ -15,7 +14,7 @@
                 <Insets bottom="10.0" left="10.0" right="10.0" top="10.0"/>
             </BorderPane.margin>
             <content>
-                <VBox fx:id="packagesContainer" alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="10.0">
+                <VBox fx:id="bookingsContainer" alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="10.0">
                     <padding>
                         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0"/>
                     </padding>
@@ -30,20 +29,23 @@
         <HBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="38.0" prefWidth="600.0"
               BorderPane.alignment="CENTER">
             <children>
-                <FlowPane alignment="CENTER" columnHalignment="CENTER" hgap="40.0" maxHeight="-Infinity"
-                          maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0"
-                          prefWidth="100.0" vgap="10.0" HBox.hgrow="ALWAYS">
+                <FlowPane fx:id="SelectType" alignment="CENTER" columnHalignment="CENTER" hgap="40.0"
+                          maxHeight="-Infinity" maxWidth="1.7976931348623157E308" minHeight="-Infinity"
+                          minWidth="-Infinity" prefHeight="50.0" prefWidth="100.0" vgap="10.0" HBox.hgrow="ALWAYS">
                     <children>
                         <TextField fx:id="searchText" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
-                                   minWidth="-Infinity" prefHeight="25.0" prefWidth="120.0" promptText="package name"/>
+                                   minWidth="-Infinity" prefHeight="25.0" prefWidth="120.0" promptText="name"/>
                         <Button fx:id="search" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
                                 minWidth="-Infinity" mnemonicParsing="false" onAction="#onSearchAction"
                                 prefHeight="30.0" prefWidth="70.0" text="Search"/>
-                        <Button alignment="CENTER" contentDisplay="TOP" minWidth="33.0" mnemonicParsing="false"
-                                onAction="#onClickViewPackages" prefHeight="30.0" prefWidth="110.0"
-                                text="View Pacakges"/>
+                        <ComboBox fx:id="bookingTypes" prefHeight="30.0" prefWidth="150.0"
+                                  promptText="Select Booking Type"/>
                         <Button alignment="CENTER" contentDisplay="CENTER" minWidth="33.0" mnemonicParsing="false"
-                                onAction="#onClickAddPackages" prefHeight="30.0" prefWidth="110.0" text="Add Pacakges"/>
+                                onAction="#onClickViewSales" prefHeight="30.0" prefWidth="120.0"
+                                text="View Sales Report"/>
+                        <Button alignment="CENTER" contentDisplay="CENTER" layoutX="236.0" layoutY="40.0"
+                                minWidth="33.0" mnemonicParsing="false" onAction="#onClickExportSales" prefHeight="30.0"
+                                prefWidth="150.0" text="Export Sales Report"/>
                     </children>
                     <HBox.margin>
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>

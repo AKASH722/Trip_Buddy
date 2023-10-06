@@ -1,0 +1,9 @@
+.button {
+    -fx-text-fill: #d66bef;
+    -fx-font-size: 13;
+}
+
+.combo-box {
+    -fx-text-fill: #d66bef;
+    -fx-font-size: 12;
+}

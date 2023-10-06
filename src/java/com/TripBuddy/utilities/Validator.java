@@ -1,4 +1,4 @@
-package com.user;
+package com.TripBuddy.utilities;
 
 public class Validator {
     public static boolean email(String email) {

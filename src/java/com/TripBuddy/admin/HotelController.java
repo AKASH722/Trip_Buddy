@@ -1,8 +1,8 @@
-package com.admin;
+package com.TripBuddy.admin;
 
-import com.Records.Hotel;
-import com.database.Database;
-import com.login.TripBuddy;
+import com.TripBuddy.Records.Hotel;
+import com.TripBuddy.TripBuddy;
+import com.TripBuddy.database.Database;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.event.ActionEvent;

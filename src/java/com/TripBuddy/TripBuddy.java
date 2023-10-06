@@ -1,6 +1,6 @@
-package com.login;
+package com.TripBuddy;
 
-import com.Records.User;
+import com.TripBuddy.Records.User;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -17,7 +17,6 @@ public class TripBuddy extends Application {
     @Override
     public void start(Stage stage) throws Exception {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/login.fxml"));
-//        loader = new FXMLLoader(getClass().getResource("/fxml/admin/home.fxml"));
         Scene scene = new Scene(loader.load());
         stage.setScene(scene);
         stage.setTitle("Trip Buddy");

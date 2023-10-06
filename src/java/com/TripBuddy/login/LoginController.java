@@ -1,8 +1,9 @@
-package com.login;
+package com.TripBuddy.login;
 
-import com.Records.User;
-import com.database.Database;
-import com.user.Validator;
+import com.TripBuddy.Records.User;
+import com.TripBuddy.TripBuddy;
+import com.TripBuddy.database.Database;
+import com.TripBuddy.utilities.Validator;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;

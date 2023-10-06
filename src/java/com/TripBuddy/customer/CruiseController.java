@@ -1,18 +1,18 @@
-package com.customer;
+package com.TripBuddy.customer;
 
-import com.Records.Cruise;
-import com.database.Database;
+import com.TripBuddy.Records.Cruise;
+import com.TripBuddy.TripBuddy;
+import com.TripBuddy.database.Database;
+import com.TripBuddy.utilities.BookingNumber;
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Dialog;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
@@ -21,6 +21,7 @@ import javafx.util.Duration;
 
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class CruiseController implements Initializable {
@@ -106,7 +107,7 @@ public class CruiseController implements Initializable {
             Label capacityLabel = new Label("Capacity: " + cruise.capacity() + " passengers");
             Label departureLabel = new Label("Departure: " + cruise.departurePort() + " at " + cruise.departureDateTime());
             Label arrivalLabel = new Label("Arrival: " + cruise.arrivalPort() + " at " + cruise.arrivalDateTime());
-            Label priceLabel = new Label("Price: " + cruise.price());
+            Label priceLabel = new Label("Price: " + cruise.price() * 1.3);
             nameLabel.setStyle("-fx-font-size: 14px; -fx-font-weight: bold;");
             descriptionLabel.setStyle("-fx-font-size: 12px;");
             priceLabel.setStyle("-fx-font-size: 12px; -fx-font-weight: bold;");
@@ -135,5 +136,91 @@ public class CruiseController implements Initializable {
     }
 
     private void onBookButtonAction(ActionEvent actionEvent) {
+        Button button = (Button) actionEvent.getSource();
+        int cruiseId = Integer.parseInt(button.getId());
+        Database database = new Database();
+
+        try {
+            Cruise cruise = database.getCruise(cruiseId);
+            database.close();
+
+            Dialog<ButtonType> dialog = new Dialog<>();
+            dialog.setTitle("Cruise Booking");
+            dialog.setHeaderText("Enter Booking Details");
+
+            // Create UI elements for input
+            Label noOfTicketsLabel = new Label("Number of Tickets");
+            TextField noOfTicketsTextField = new TextField("0");
+
+            GridPane gridPane = new GridPane();
+            gridPane.add(noOfTicketsLabel, 0, 0);
+            gridPane.add(noOfTicketsTextField, 1, 0);
+            gridPane.setHgap(10);
+            gridPane.setVgap(10);
+
+            dialog.getDialogPane().setContent(gridPane);
+
+            ButtonType bookButton = new ButtonType("Book Cruise", ButtonBar.ButtonData.YES);
+            dialog.getDialogPane().getButtonTypes().addAll(bookButton, ButtonType.NO);
+            while (true) {
+                Optional<ButtonType> result = dialog.showAndWait();
+                if (result.isPresent() && result.get() == bookButton) {
+                    try {
+                        int noOfTickets = Integer.parseInt(noOfTicketsTextField.getText());
+
+                        if (noOfTickets <= 0) {
+                            showWarningDialog("Warning", "Please enter a valid number of tickets.");
+
+                            showWarningDialog("Warning", "Please enter valid details");
+                        } else {
+                            double totalPrice = cruise.price() * 1.3 * noOfTickets;
+                            Dialog<ButtonType> confirmationDialog = new Dialog<>();
+                            confirmationDialog.setTitle("Confirm");
+                            confirmationDialog.setHeaderText("Confirm booking");
+                            Label totalPriceLabel = new Label("Total Price for " + noOfTickets + " persons: $" + totalPrice);
+                            confirmationDialog.getDialogPane().setContent(totalPriceLabel);
+                            ButtonType confirmButton = new ButtonType("Confirm", ButtonBar.ButtonData.OK_DONE);
+                            confirmationDialog.getDialogPane().getButtonTypes().addAll(confirmButton, ButtonType.CANCEL);
+                            Optional<ButtonType> confirmationResult = confirmationDialog.showAndWait();
+                            if (confirmationResult.isPresent() && confirmationResult.get() == confirmButton) {
+                                Database database1 = new Database();
+                                String bookingNumber = BookingNumber.generateBookingNumber("cruises");
+                                boolean added = database1.addBookingCruises(bookingNumber, cruise.cruiseId(), noOfTickets, totalPrice, TripBuddy.user.user_id());
+                                database1.close();
+                                if (!added) {
+                                    showWarningDialog("Warning", "Sorry we couldn't book your package. Please try again later");
+                                } else {
+                                    showInfoDialog("Success", "Booking successful. Your booking number is " + bookingNumber);
+                                    break;
+                                }
+                            } else {
+                                showWarningDialog("Warning", "Booking cancelled");
+                            }
+                        }
+                    } catch (NumberFormatException e) {
+                        showWarningDialog("Warning", "Please enter a valid number");
+                    }
+                } else {
+                    break;
+                }
+            }
+        } catch (Exception ignored) {
+        }
+    }
+
+    private void showWarningDialog(String title, String contentText) {
+        Dialog<String> dialog = new Dialog<>();
+        dialog.getDialogPane().getScene().getWindow().setOnCloseRequest(windowEvent -> dialog.close());
+        dialog.setTitle(title);
+        dialog.setHeaderText(contentText);
+        dialog.showAndWait();
+    }
+
+    private void showInfoDialog(String title, String contentText) {
+        Dialog<String> dialog = new Dialog<>();
+        dialog.getDialogPane().getScene().getWindow().setOnCloseRequest(windowEvent -> dialog.close());
+        dialog.setTitle(title);
+        dialog.setHeaderText(contentText);
+        dialog.showAndWait();
     }
 }

@@ -5,9 +5,10 @@
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.*?>
-<BorderPane xmlns:fx="http://javafx.com/fxml/1" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="100.0"
+<BorderPane xmlns:fx="http://javafx.com/fxml/1" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308"
+            prefHeight="100.0"
             prefWidth="1000.0" stylesheets="/css/packages.css" xmlns="http://javafx.com/javafx/20.0.1"
-            fx:controller="com.customer.CruiseController">
+            fx:controller="com.TripBuddy.customer.CruiseController">
     <center>
         <ScrollPane id="internalPane" fitToHeight="true" fitToWidth="true" maxHeight="1.7976931348623157E308"
                     maxWidth="1.7976931348623157E308" prefHeight="200.0" prefWidth="200.0"

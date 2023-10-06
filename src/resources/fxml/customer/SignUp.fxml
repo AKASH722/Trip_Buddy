@@ -8,7 +8,7 @@
 <StackPane xmlns:fx="http://javafx.com/fxml/1" id="SignupPane" maxHeight="Infinity" maxWidth="Infinity"
            minHeight="400.0"
            minWidth="600.0" prefHeight="400.0" prefWidth="600.0" stylesheets="/css/signUp.css"
-           xmlns="http://javafx.com/javafx/20.0.1" fx:controller="com.customer.SignUpController">
+           xmlns="http://javafx.com/javafx/20.0.1" fx:controller="com.TripBuddy.customer.SignUpController">
     <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0"
                 prefWidth="600.0" StackPane.alignment="CENTER">
         <Label id="title" alignment="CENTER" blendMode="MULTIPLY" contentDisplay="CENTER" layoutX="234.0" layoutY="42.0"

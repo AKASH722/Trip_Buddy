@@ -1,8 +1,8 @@
-package com.admin;
+package com.TripBuddy.admin;
 
-import com.Records.Packages;
-import com.database.Database;
-import com.login.TripBuddy;
+import com.TripBuddy.Records.Packages;
+import com.TripBuddy.TripBuddy;
+import com.TripBuddy.database.Database;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
