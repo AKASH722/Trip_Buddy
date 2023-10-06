@@ -932,14 +932,44 @@ public class Database {
         }
     }
 
-    public void getSalesReport() {
+    public void getSalesReport(ArrayList<Sales> sales) {
         try {
             CallableStatement callableStatement = connection.prepareCall("{call create_sales_report()}");
             callableStatement.execute();
             callableStatement.close();
-
+            PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM sales");
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                String saleType = resultSet.getString("sale_type");
+                String itemName = resultSet.getString("item_name");
+                double totalSales = resultSet.getDouble("total_sales");
+                double profit = resultSet.getDouble("profit");
+                Sales sale = new Sales(saleType, itemName, totalSales, profit);
+                sales.add(sale);
+            }
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
+    }
+
+    public void getSalesReport(ArrayList<Sales> sales, LocalDate startDate, LocalDate endDate) {
+            try {
+                CallableStatement callableStatement = connection.prepareCall("{call get_sales_report(?,?)}");
+                callableStatement.setDate(1, Date.valueOf(startDate));
+                callableStatement.setDate(2, Date.valueOf(endDate));
+                ResultSet resultSet = callableStatement.executeQuery();
+                while (resultSet.next()) {
+                    String saleType = resultSet.getString("sale_type");
+                    String itemName = resultSet.getString("item_name");
+                    double totalSales = resultSet.getDouble("total_sales");
+                    double profit = resultSet.getDouble("profit");
+                    Sales sale = new Sales(saleType, itemName, totalSales, profit);
+                    sales.add(sale);
+                }
+                resultSet.close();
+                callableStatement.close();
+            } catch (SQLException e) {
+                System.out.println(e.getMessage());
+            }
     }
 }

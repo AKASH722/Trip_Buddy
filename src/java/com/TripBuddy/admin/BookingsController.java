@@ -3,19 +3,24 @@ package com.TripBuddy.admin;
 import com.TripBuddy.Records.BookingCruises;
 import com.TripBuddy.Records.BookingHotel;
 import com.TripBuddy.Records.BookingPackages;
+import com.TripBuddy.Records.Sales;
 import com.TripBuddy.database.Database;
+import com.TripBuddy.utilities.SalesReport;
+import javafx.beans.property.SimpleStringProperty;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.Dialog;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
+import javafx.stage.DirectoryChooser;
 
+import java.io.File;
 import java.net.URL;
+import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class BookingsController implements Initializable {
@@ -168,11 +173,126 @@ public class BookingsController implements Initializable {
     }
 
     public void onClickExportSales(ActionEvent actionEvent) {
+        // Create the main dialog
+        Dialog<ButtonType> mainDialog = new Dialog<>();
+        mainDialog.getDialogPane().getScene().getWindow().setOnCloseRequest(windowEvent -> mainDialog.close());
+        mainDialog.setTitle("Export Sales");
 
+        // Create a GridPane for the main dialog layout
+        GridPane gridPane = new GridPane();
+        gridPane.setHgap(10);
+        gridPane.setVgap(10);
+
+        // Create labels and date pickers for start and end dates
+        Label startDateLabel = new Label("Start Date");
+        DatePicker startDate = new DatePicker();
+        Label endDateLabel = new Label("End Date");
+        DatePicker endDate = new DatePicker();
+
+        // Create label and button for choosing a folder
+        Label chooseFolderLabel = new Label("Choose Folder");
+        DirectoryChooser directoryChooser = new DirectoryChooser();
+        Button chooseFolder = new Button("Choose Folder");
+
+        // Set the action for the "Choose Folder" button
+        chooseFolder.setOnAction(actionEvent1 -> {
+            directoryChooser.setTitle("Choose Folder");
+            File selectedDirectory = directoryChooser.showDialog(mainDialog.getDialogPane().getScene().getWindow());
+
+            // Update the initial directory for the directory chooser
+            if (selectedDirectory != null) {
+                directoryChooser.setInitialDirectory(selectedDirectory);
+            }
+        });
+
+        // Add components to the GridPane
+        gridPane.add(startDateLabel, 0, 0);
+        gridPane.add(startDate, 1, 0);
+        gridPane.add(endDateLabel, 0, 1);
+        gridPane.add(endDate, 1, 1);
+        gridPane.add(chooseFolderLabel, 0, 2);
+        gridPane.add(chooseFolder, 1, 2);
+
+        // Set the content of the main dialog to the GridPane
+        mainDialog.getDialogPane().setContent(gridPane);
+
+        // Define button types for the main dialog
+        ButtonType saveButtonType = new ButtonType("Save", ButtonBar.ButtonData.YES);
+        ButtonType cancelButtonType = new ButtonType("Cancel", ButtonBar.ButtonData.NO);
+        mainDialog.getDialogPane().getButtonTypes().addAll(saveButtonType, cancelButtonType);
+        // Create a dialog for displaying warnings or success messages
+        Dialog<String> dialog = new Dialog<>();
+        dialog.getDialogPane().getScene().getWindow().setOnCloseRequest(windowEvent -> dialog.close());
+
+        while (true) {
+            // Wait for user action in the main dialog
+            Optional<ButtonType> result = mainDialog.showAndWait();
+
+            if (result.isPresent() && result.get() == saveButtonType) {
+                LocalDate selectedStartDate = startDate.getValue();
+                LocalDate selectedEndDate = endDate.getValue();
+
+                // Check if start and end dates are valid
+                if (selectedStartDate == null || selectedEndDate == null) {
+                    displayWarning("Please select a start date and end date");
+                } else if (selectedStartDate.isAfter(selectedEndDate)) {
+                    displayWarning("Start date cannot be after end date");
+                } else if (directoryChooser.getInitialDirectory() == null) {
+                    displayWarning("Please select a folder");
+                } else {
+                    // Perform data export
+                    Database database = new Database();
+                    ArrayList<Sales> sales = new ArrayList<>();
+                    database.getSalesReport(sales, selectedStartDate, selectedEndDate);
+
+                    if (sales.isEmpty()) {
+                        displayWarning("No sales found");
+                    } else {
+                        new SalesReport(sales, directoryChooser.getInitialDirectory().getAbsolutePath());
+                        displaySuccess("Sales report exported successfully");
+                        break;
+                    }
+                }
+            } else {
+                break;
+            }
+        }
+    }
+
+    private void displayWarning(String message) {
+        Alert alert = new Alert(Alert.AlertType.WARNING);
+        alert.setTitle("Warning");
+        alert.setContentText(message);
+        alert.show();
+    }
+
+    // Helper method to display a success message
+    private void displaySuccess(String message) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Success");
+        alert.setContentText(message);
+        alert.show();
     }
 
     public void onClickViewSales(ActionEvent actionEvent) {
+        bookingsContainer.getChildren().clear();
         Database database = new Database();
-        database.getSalesReport();
+        ArrayList<Sales> sales = new ArrayList<>();
+        database.getSalesReport(sales);
+        TableView<Sales> salesTableView = new TableView<>();
+        salesTableView.setEditable(false);
+        salesTableView.setPrefWidth(600);
+        salesTableView.setPrefHeight(400);
+        TableColumn<Sales, String> saleType = new TableColumn<>("Sale Type");
+        TableColumn<Sales, String> itemName = new TableColumn<>("Item Name");
+        TableColumn<Sales, String> totalSales = new TableColumn<>("Total Sales");
+        TableColumn<Sales, String> profit = new TableColumn<>("Profit");
+        saleType.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().sale_type()));
+        itemName.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().item_name()));
+        totalSales.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().total_sales().toString()));
+        profit.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().profit().toString()));
+        salesTableView.getColumns().addAll(saleType, itemName, totalSales, profit);
+        salesTableView.getItems().addAll(sales);
+        bookingsContainer.getChildren().add(salesTableView);
     }
 }
